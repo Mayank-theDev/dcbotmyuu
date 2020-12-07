@@ -1,0 +1,6 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+myuu.xyz	TRUE	/	FALSE	1999999999	PHPSESSID	ad1df3d5f811e6a4ab2a2df399ebef58
+.fontawesome.com	TRUE	/	FALSE	1999999999	__cfduid	dbcd8c124428f2896b1fedd7b0fb5b1c01607340470
+kit.fontawesome.com	TRUE	/	FALSE	1999999999	SameSite	Lax
+

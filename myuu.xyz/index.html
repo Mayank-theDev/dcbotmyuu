@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<!-- Mirrored from myuu.xyz/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 07 Dec 2020 11:27:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="https://myuu.xyz/css/style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118672947-1"></script>
+<script src="../cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<style>
+#jsbar {
+  position: static;
+  top: 0;
+  width: 100%;
+  height: 30px;
+  background-color: #AE0000;
+  text-align: center;
+  padding-top: 3px;
+  color: #ffffff;
+  font: 16px Poppins, "Open Sans", sans-serif;
+}
+
+#cookiebar {
+  display: none;
+  position: static;
+  top: 0;
+  width: 100%;
+  height: 30px;
+  background-color: #AE0000;
+  text-align: center;
+  padding-top: 3px;
+  color: #ffffff;
+  font: 16px Poppins, "Open Sans", sans-serif;
+}
+</style>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-118672947-1');
+</script>
+
+<noscript>
+  <div id="jsbar">Myuu works best with JavaScript enabled</div>
+</noscript>
+
+<script>
+    function checkCookie(){
+        var cookieEnabled = navigator.cookieEnabled;
+        if (!cookieEnabled){
+            document.cookie = "testcookie";
+            cookieEnabled = document.cookie.indexOf("testcookie")!=-1;
+        }
+
+        document.cookie = "testcookie; expires=Thu, 01-Jan-1970 00:00:01 GMT";
+        return cookieEnabled;
+    }
+
+    function post(path, params) {
+
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", path);
+
+        for(var key in params) {
+            if(params.hasOwnProperty(key)) {
+                var hiddenField = document.createElement("input");
+                hiddenField.setAttribute("type", "hidden");
+                hiddenField.setAttribute("name", key);
+                hiddenField.setAttribute("value", params[key]);
+
+                form.appendChild(hiddenField);
+            }
+        }
+
+        document.body.appendChild(form);
+        form.submit();
+    }
+
+    function setCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
+
+    function eraseCookie(name) {
+        document.cookie = name+'=; Max-Age=-99999999;';
+    }
+
+
+  $(document).ready(function() {
+    if(!checkCookie()) {
+      if(window.location.pathname !== "index.html") window.location = "index.html";
+      document.getElementById("cookiebar").style.display="inline-block";
+    }
+
+    if (window.location.href.indexOf("?source=google") != -1) {
+        setCookie('source', 'google', 30);
+    }
+
+    // $(".statsmenu").on('click', function(e){
+    //     e.preventDefault();
+    //     if(!isset($_SESSION['userid']) || !isset($_SESSION['useremail']) || !isset($_SESSION['pkc']) || !isset($_SESSION['pkd'])) { ?> post('/login', {"name": ""});
+    //     } else { ?> window.location.href='/'  } ?>
+    // });
+
+    $("#commandsmenu").on('click', function(e){
+        e.preventDefault();
+        window.location.href='https://myuu.xyz/commands';
+    });
+
+    $("#trainersmenu").on('click', function(e){
+        e.preventDefault();
+         post('/login', {"name": "trainers"});
+            });
+
+    $("#skinsmenu").on('click', function(e){
+        e.preventDefault();
+         post('/login', {"name": "skins"});
+            });
+
+    $("#teamsmenu").on('click', function(e){
+        e.preventDefault();
+         post('/login', {"name": "teams"});
+            });
+
+    $("#login-b").on('click', function(e){
+        e.preventDefault();
+         post('/login', {"name": "home"});
+            });
+
+  });
+</script>
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Myuu - Discord meets Pokémon</title>
+    <meta name="description"  content="A Discord Pokémon Bot" />
+    <meta name="author" content="Iyazo">
+    <meta name="keywords"  content="iyazo, pokémon, pokemon, discord, bot, myuu, pokemon bot, pokemon bot discord, discord pokemon bot, discord pokemon," />
+    <meta property="og:title" content="A Discord Pokémon Bot" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+    <meta property="og:site_name" content="" />
+    <meta property="og:description" content="A Discord Pokémon Bot" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="theme-color" content="#1f2029"/>
+    <meta name="msapplication-navbutton-color" content="#1f2029"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="#1f2029"/>
+
+</head>
+
+<header class="cd-header">
+  <a id="myuu" href="index.html" class="link-to-myuu hover-target"></a>
+    <div class="header-wrapper">
+      <div class="nav-but-wrap">
+        <div class="menu-icon hover-target" id="menu-button">
+          <span class="menu-icon__line menu-icon__line-left"></span>
+          <span class="menu-icon__line"></span>
+          <span class="menu-icon__line menu-icon__line-right"></span>
+        </div>
+      </div>
+    </div>
+</header>
+
+<div class="nav z-bigger-2">
+    <div class="nav__content">
+    <div class="current-trainer-name"></div>
+      <ul class="nav__list">
+        <li class="nav__list-item active-nav"><a href="index.html" class="hover-target">home</a></li>
+        <li class="nav__list-item" id="commandsmenu"><a href="https://myuu.xyz/commands" class="hover-target">commands</a></li>
+        <li class="nav__list-item"><a data-toggle="collapse" data-target=".collapse" data-text="Collapse" class="hover-target" role="button" aria-expanded="false" aria-controls="collapseSub">skins</a>
+          <ul class="sub-links collapse" id="collapseSub">
+            <li><a href="https://myuu.xyz/skins" class="hover-target" id="skinsmenu">pokémon</a></li>
+            <li><a href="https://myuu.xyz/trainers" class="hover-target" id="trainersmenu">trainer</a></li>
+            <li><a href="https://myuu.xyz/teams" class="hover-target" id="teamsmenu">team</a></li>
+          </ul>
+        </li>
+        <li class="nav__list-item"><a href="https://myuu.xyz/faq" class="hover-target">FAQ</a></li>
+        <li class="nav__list-item">
+          <a href="https://myuu.xyz/login" id="login-b" class="hover-target">
+           Login
+                    </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Scroll back to top
+  ================================================== -->
+
+  <div class="scroll-to-top hover-target"></div>
+
+  <!-- Page cursor
+  ================================================== -->
+
+  <div class='cursor' id="cursor"></div>
+  <div class='cursor2' id="cursor2"></div>
+  <div class='cursor3' id="cursor3"></div>
+
+  <audio id="hover-audio" src="https://myuu.xyz/sounds/menu.wav" preload="auto"></audio>
+  <script src="../kit.fontawesome.com/b5972f7ef3.js"></script>
+
+  <script>
+  $(document).ready(function() {
+    window.onscroll = function() {
+      if (window.pageYOffset > 150) {
+        document.getElementsByClassName("section-top")[0].style.visibility = "hidden";
+      } else {
+        document.getElementsByClassName("section-top")[0].style.visibility = "visible";
+      }
+    }
+  });
+
+  // Handler that uses various data-* attributes to trigger
+  // specific actions, mimicing bootstraps attributes
+  const triggers = Array.from(document.querySelectorAll('[data-toggle="collapse"]'));
+
+  window.addEventListener('click', ev => {
+    const elm = ev.target;
+    if (triggers.includes(elm)) {
+      const selector = elm.getAttribute('data-target');
+      collapse(selector, 'toggle');
+    }
+  }, false);
+
+  const fnmap = {
+    'toggle': 'toggle',
+    'show': 'add',
+    'hide': 'remove' };
+
+  const collapse = (selector, cmd) => {
+    const targets = Array.from(document.querySelectorAll(selector));
+    targets.forEach(target => {
+      target.classList[fnmap[cmd]]('show');
+    });
+  };
+  </script>
+<style>
+.fromTheLeftNothingIsRight {
+        unicode-bidi: bidi-override;
+        direction: rtl;
+}
+</style>
+
+<script data-ad-client="ca-pub-7354973439436396" async src="../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+
+<body>
+
+  <!-- <div class="spacer s2"></div>
+  <div class="spacer s0" id="trigger"></div>
+  <div id="target" style="position:absolute;">
+    <img id="plane" src="/img/flying-mew-original.png">
+  </div>
+  <div class="spacer s2"></div> -->
+
+  <div class="shadow-title parallax-top-shadow">myuu</div>
+  <!-- <div class="section-parallax parallax-00" style="background-image: url('/img/parallax-0.png');"></div> -->
+  <!-- <div class="section-parallax parallax-01" style="background-image: url('/img/bg.png');"></div> -->
+
+  <div class="full-height">
+    <div class="section-title-wrap">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center parallax-fade-top">
+            <p>Myuu</p>
+            <h1>The best Discord<br>Pokémon experience</h1>
+            <div class="wrap">
+	            <button onclick="location.href='https://discordapp.com/oauth2/authorize?&amp;client_id=438057969251254293&amp;scope=bot&amp;permissions=314432'" class="btn fourth hover-target">Add to Discord</button>
+              <button onclick="location.href='https://discord.gg/aJbWQjU'" class="btn fourth hover-target">Support</button>
+          	</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--<div class="col-12 parallax-fade-top">-->
+  <!--  <div class="notifications">-->
+
+  <!--    <div class="notify first hover-target">-->
+  <!--      <div class="first-notification">-->
+  <!--        <img src="/img/sdragonite.png"></img>-->
+  <!--      </div>-->
+  <!--      <div class="info">-->
+  <!--        <span>Shiny Dragonite Event</span>-->
+  <!--        <span>Type the command <div class="purple" style="display: inline-block;">.events</div><br>in Discord for more information</span>-->
+  <!--      </div>-->
+  <!--    </div>-->
+
+  <!--    <div class="notify second hover-target">-->
+  <!--      <div class="second-notification">-->
+  <!--        <img src="/img/MissingNo.png"></img>-->
+  <!--      </div>-->
+  <!--      <div class="info">-->
+  <!--        <span>MissingNo. Event</span>-->
+  <!--        <span>Type the command <div class="purple" style="display: inline-block;">.events</div><br>in Discord for more information</span>-->
+  <!--      </div>-->
+  <!--    </div>-->
+
+  <!--  </div>-->
+  <!--</div>-->
+
+  <div class="section-top">
+    <h3>scroll</h3>
+  </div>
+
+  <div id="landing-page-wrap">
+  	<section id="featured-products">
+  		<div class="content-container">
+
+  			<div id="os2" class="product-row">
+  				<div class="product-image"><img src="https://myuu.xyz/img/battle.png"></div>
+  				<div class="product-text">
+  					<h2 class="product-title">The Battle Experience</h2>
+  					<p>A vast amount of end-game options, with a competitive PvP environment built on the latest Gen-7 format</p>
+  				</div>
+  			</div>
+  			<div class="product-row">
+  				<div class="product-image"><img src="https://myuu.xyz/img/team.png"></div>
+  				<div class="product-text">
+  					<h2 class="product-title">Your Team</h2>
+  					<p>Travel across routes, trade with friends, hatch eggs and summon legendary Pokémon to complete the Pokédex.</p>
+  				</div>
+  			</div>
+
+  			<div class="product-row">
+  				<div class="product-image"><img src="https://myuu.xyz/img/box.png"></div>
+  				<div class="product-text">
+  					<h2 class="product-title">Your Storage</h2>
+  					<p>Level up and EV train your Pokémon. Form your ideal team to be the very best.</p>
+  				</div>
+  			</div>
+  			<div class="product-row">
+  				<div class="product-image"><img src="https://myuu.xyz/img/stats.png"></div>
+  				<div class="product-text">
+  					<h2 class="product-title">Authentic Statistics</h2>
+  					<p>Hit two birds with one stone as your Pokémon will gain XP when you chat with friends.</p>
+  				</div>
+  			</div>
+  		</div>
+
+  	</section>
+  </div>
+
+  <footer class="page-footer font-small unique-color-dark" style="margin-top: 150px; margin-bottom: 70px;">
+
+    <div class="container text-center text-md-left mt-5">
+      <div class="row mt-3">
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <h5 class="purple" style="font-weight: 700;">Myuu</h5>
+          <hr class="accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 30px; background-color: #c4c3ca;">
+          <p>Myuu is a Discord Unofficial fan-created game.</p>
+        </div>
+
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <h5 class="purple" style="font-weight: 700;">Useful links</h5>
+          <hr class="accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 30px; background-color: #c4c3ca;">
+          <p>
+            <a href="https://myuu.xyz/disclaimer" class=" hover-target">Disclaimer</a>
+          </p>
+          <p>
+            <a href="https://myuu.xyz/commands" class=" hover-target">Commands</a>
+          </p>
+          <p>
+            <!-- <a href="/donate" class=" hover-target">Donate</a> -->
+          </p>
+          <p>
+            <!-- <a href="https://www.patreon.com/myuubot" class=" hover-target">Patreon</a> -->
+          </p>
+          <p>
+            <a href="https://myuu.xyz/faq" class=" hover-target">FAQ</a>
+          </p>
+        </div>
+
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <h5 class="purple" style="font-weight: 700;">Contact</h5>
+          <hr class="accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 30px; background-color: #c4c3ca;">
+          <p>
+            <i class="fab fa-discord mr-3"></i> Iyazo#0001</p>
+          <p>
+            <i class="fas fa-envelope mr-3"></i><span class="fromTheLeftNothingIsRight">moc.liamg@vedozayi</span></p>
+          <p>
+        </div>
+
+      </div>
+    </div>
+
+  </footer>
+
+  <script src="https://myuu.xyz/js/script.js"></script>
+</body>
+
+<!-- Mirrored from myuu.xyz/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 07 Dec 2020 11:27:51 GMT -->
+</html>
